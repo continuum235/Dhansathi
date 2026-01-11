@@ -15,7 +15,7 @@ The project emphasizes accessibility and security, ensuring users can safely eng
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 - **Frontend:** React (with Clerk authentication)  
 - **Backend:** Node.js + Express.js  
 - **Database:** MongoDB (for CRUD operations)  
