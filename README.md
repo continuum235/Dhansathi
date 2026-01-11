@@ -1,4 +1,4 @@
-# Dhansathi 💰  
+# Dhansathi 
 **Financial Empowerment Platform for Women in Rural Areas**
 
 Dhansathi is a MERN stack project focused on **financial literacy and empowerment** for women in rural communities.  
@@ -7,11 +7,11 @@ The project emphasizes accessibility and security, ensuring users can safely eng
 
 ---
 
-## 🚀 Features
-- 📚 **Tutorials Page** – Learn about budgeting, savings, and financial independence.  
-- 🤖 **Chatbot** – AI-powered assistant integrated with **Groq Cloud API** to guide users with queries in simple language.  
-- 📊 **Budget Planner** – Helps track income, expenses, and savings goals.  
-- 🔐 **Authentication** – Secure user login/signup with **Clerk**.   
+## Features
+- **Tutorials Page** – Learn about budgeting, savings, and financial independence.  
+- **Chatbot** – AI-powered assistant integrated with **Groq Cloud API** to guide users with queries in simple language.  
+- **Budget Planner** – Helps track income, expenses, and savings goals.  
+- **Authentication** – Secure user login/signup with **Clerk**.   
 
 ---
 
@@ -24,9 +24,9 @@ The project emphasizes accessibility and security, ensuring users can safely eng
 
 ---
 
-## 📦 Installation & Setup
+## Installation & Setup
 
-### 🔹 Clone the Repository
+### Clone the Repository
 ```bash
 git clone https://github.com/Tanish-235/Dhansathi.git
 cd Dhansathi
@@ -34,7 +34,7 @@ cd Dhansathi
 
 ---
 
-### 🔹 Backend Setup
+### Backend Setup
 ```bash
 cd backend
 npm install
@@ -54,7 +54,7 @@ npm start
 
 ---
 
-### 🔹 Frontend Setup
+### Frontend Setup
 ```bash
 cd frontend
 npm install
@@ -72,12 +72,12 @@ npm run dev
 
 ---
 
-## 🤝 Contributing
+## Contributing
 Contributions are welcome! Feel free to fork this repo, open issues, or submit PRs.  
 
 ---
 
-## ✨ Acknowledgements
+## Acknowledgements
 - [Clerk](https://clerk.com/) for authentication  
 - [MongoDB](https://www.mongodb.com/) for database services  
 - [Groq](https://groq.com/) for chatbot integration  
