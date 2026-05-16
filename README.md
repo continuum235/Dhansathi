@@ -42,7 +42,7 @@ npm install
 
 - Create a `.env` file in the **backend** folder:
 ```env
-MONGO_URI=your-mongodb-connection-string
+MONGODB_URI=your-mongodb-connection-string
 PORT=5000
 GROQ_API_KEY=your-groq-cloud-api-key
 ```
@@ -63,6 +63,7 @@ npm install
 - Create a `.env` file in the **frontend** folder:
 ```env
 VITE_CLERK_PUBLISHABLE_KEY=your-clerk-api
+VITE_API_URL=/api
 ```
 
 - Start the frontend:

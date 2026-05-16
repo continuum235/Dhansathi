@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Lightbulb, Code, Trash2, Bot, User, Edit, Search } from 'lucide-react';
 import Footer from '../components/Footer.jsx';
+import { buildApiUrl } from '../lib/api';
 
 const SathiBot = () => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const SathiBot = () => {
 
     try {
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL_CHAT}/chat`, {
+      const res = await fetch(buildApiUrl('/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: trimmed })
@@ -99,7 +100,7 @@ const SathiBot = () => {
         id: Date.now() + 2,
         sender: 'bot',
         text:
-          "Hmm, I'm having trouble reaching the server. Make sure your backend is running on port 5000 and CORS is configured for http://localhost:5173.",
+          "Hmm, I'm having trouble reaching the server. Make sure the backend is running and the frontend dev server is proxying /api to port 5000.",
         timestamp: new Date()
       };
       setMessages((prev) => [...prev, botMsg]);
