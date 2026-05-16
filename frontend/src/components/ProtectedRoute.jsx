@@ -1,7 +1,22 @@
 import React from 'react';
-import { SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react';
+import { SignedIn, SignedOut, SignInButton, isClerkEnabled } from '../lib/auth.jsx';
 
 const ProtectedRoute = ({ children, fallback = null }) => {
+  if (!isClerkEnabled) {
+    return fallback || (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="max-w-md w-full space-y-4 p-8 text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900">
+            Authentication unavailable
+          </h2>
+          <p className="text-sm text-gray-600">
+            Set `VITE_CLERK_PUBLISHABLE_KEY` to enable sign-in for protected pages.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <SignedIn>
