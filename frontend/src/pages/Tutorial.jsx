@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 import { Plus, ExternalLink, BookOpen, Edit, Trash2, X } from 'lucide-react';
+import { buildApiUrl } from '../lib/api';
 
 const Tutorial = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Tutorial = () => {
     url: ''
   });
 
-  const API_URL = '/api/tutorials';
+  const API_URL = buildApiUrl('/tutorials');
 
   // Fetch all tutorials
   const fetchTutorials = async () => {
@@ -216,7 +217,7 @@ const Tutorial = () => {
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <p className="font-semibold">Error: {error}</p>
-                  <p className="text-sm mt-2 text-red-600">Check that the backend is running on port 5000 and MongoDB is connected.</p>
+                  <p className="text-sm mt-2 text-red-600">Check that `VITE_API_URL` points to a live backend and MongoDB is connected.</p>
                 </div>
                 <button
                   onClick={() => setError('')}

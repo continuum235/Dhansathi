@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa';
 
-const proxyTarget = process.env.VITE_PROXY_TARGET || 'http://localhost:3001';
+const proxyTarget = process.env.VITE_PROXY_TARGET || 'http://localhost:5000';
 
 // https://vite.dev/config/
 export default defineConfig({

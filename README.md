@@ -40,7 +40,12 @@ cd backend
 npm install
 ```
 
-- Create a `.env` file in the **backend** folder:
+- Copy `.env.example` to `.env` in the **backend** folder:
+```bash
+cp .env.example .env
+```
+
+- Backend environment variables:
 ```env
 MONGODB_URI=your-mongodb-connection-string
 PORT=5000
@@ -60,15 +65,54 @@ cd frontend
 npm install
 ```
 
-- Create a `.env` file in the **frontend** folder:
+- Copy `.env.example` to `.env` in the **frontend** folder:
+```bash
+cp .env.example .env
+```
+
+- Frontend environment variables:
 ```env
-VITE_CLERK_PUBLISHABLE_KEY=your-clerk-api
+VITE_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
 VITE_API_URL=/api
 ```
+
+- For local development, `VITE_API_URL=/api` works with the Vite proxy.
+- For production, set `VITE_API_URL` to your deployed backend origin, for example:
+```env
+VITE_API_URL=https://dhansathi-api.onrender.com/api
+```
+- If frontend and backend are deployed on different domains, using `/api` in production will send requests to the frontend domain and return `404`.
 
 - Start the frontend:
 ```bash
 npm run dev
+```
+
+---
+
+## Deployment
+
+- Frontend example on Vercel: `https://dhansathi.vercel.app`
+- Backend example on Render: `https://dhansathi-api.onrender.com`
+- Set frontend `VITE_API_URL` on Vercel to `https://dhansathi-api.onrender.com/api`
+- Add `https://dhansathi.vercel.app` to your allowed frontend origins in the backend CORS config
+- In Clerk, add your Vercel domain as an allowed production domain and use the production publishable key
+
+### Vercel
+- Dashboard: https://vercel.com/
+- Project env for frontend:
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
+VITE_API_URL=https://dhansathi-api.onrender.com/api
+```
+
+### Render
+- Dashboard: https://render.com/
+- Project env for backend:
+```env
+MONGODB_URI=your-mongodb-connection-string
+PORT=5000
+GROQ_API_KEY=your-groq-cloud-api-key
 ```
 
 ---

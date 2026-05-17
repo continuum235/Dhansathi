@@ -100,7 +100,7 @@ const SathiBot = () => {
         id: Date.now() + 2,
         sender: 'bot',
         text:
-          "Hmm, I'm having trouble reaching the server. Make sure the backend is running and the frontend dev server is proxying /api to port 5000.",
+          "Hmm, I'm having trouble reaching the server. Make sure the backend is running and VITE_API_URL points to that backend in production.",
         timestamp: new Date()
       };
       setMessages((prev) => [...prev, botMsg]);
