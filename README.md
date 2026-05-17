@@ -73,32 +73,6 @@ npm run dev
 
 ---
 
-## Docker Setup
-
-Run the frontend and backend locally with Docker:
-
-```bash
-docker compose up --build
-```
-
-Available services:
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:5000`
-
-Create a root `.env` file for Docker if you need backend database or AI access:
-
-```env
-VITE_CLERK_PUBLISHABLE_KEY=your-clerk-api
-MONGODB_URI=your-mongodb-connection-string
-GROQ_API_KEY=your-groq-cloud-api-key
-```
-
-Notes:
-- The frontend container runs the Vite dev server and proxies `/api` to the backend container.
-- The backend can start without MongoDB, but tutorial CRUD requires `MONGODB_URI` or `MONGO_URI`.
-
----
-
 ## Contributing
 Contributions are welcome! Feel free to fork this repo, open issues, or submit PRs.  
 
