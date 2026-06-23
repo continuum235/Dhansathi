@@ -20,20 +20,20 @@ const SathiBot = () => {
   const suggestions = [
     {
       text: 'How do I start saving money with my monthly income?',
-      icon: <Edit className="w-5 h-5" />
+      icon: <Edit className="w-5 h-5" />,
     },
     {
-      text: 'What government schemes can help me save for my daughter\'s education?',
-      icon: <Lightbulb className="w-5 h-5" />
+      text: "What government schemes can help me save for my daughter's education?",
+      icon: <Lightbulb className="w-5 h-5" />,
     },
     {
       text: 'How can I apply for a small business loan to start my own shop?',
-      icon: <Search className="w-5 h-5" />
+      icon: <Search className="w-5 h-5" />,
     },
     {
       text: 'What is the best way to manage my household budget?',
-      icon: <Code className="w-5 h-5" />
-    }
+      icon: <Code className="w-5 h-5" />,
+    },
   ];
 
   // --- Handlers ---
@@ -63,18 +63,17 @@ const SathiBot = () => {
       id: Date.now(),
       sender: 'user',
       text: trimmed,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
     setMessages((prev) => [...prev, userMsg]);
     setInputValue('');
     setIsTyping(true);
 
     try {
-
       const res = await fetch(buildApiUrl('/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: trimmed })
+        body: JSON.stringify({ message: trimmed }),
       });
 
       if (!res.ok) {
@@ -91,7 +90,7 @@ const SathiBot = () => {
         id: Date.now() + 1,
         sender: 'bot',
         text: replyText,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMsg]);
     } catch (err) {
@@ -99,9 +98,8 @@ const SathiBot = () => {
       const botMsg = {
         id: Date.now() + 2,
         sender: 'bot',
-        text:
-          "Hmm, I'm having trouble reaching the server. Make sure the backend is running and VITE_API_URL points to that backend in production.",
-        timestamp: new Date()
+        text: "Hmm, I'm having trouble reaching the server. Make sure the backend is running and VITE_API_URL points to that backend in production.",
+        timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMsg]);
     } finally {
@@ -162,7 +160,11 @@ const SathiBot = () => {
                     Your personal financial mentor for rural women in India.
                   </p>
                   <p className="text-sm sm:text-base opacity-70">
-                    I can help you with: <strong>Budgeting • Saving • Banking • Loans • Government Schemes • Investments • Financial Planning</strong>
+                    I can help you with:{' '}
+                    <strong>
+                      Budgeting • Saving • Banking • Loans • Government Schemes • Investments •
+                      Financial Planning
+                    </strong>
                   </p>
                   <p className="text-xs sm:text-sm opacity-60 mt-2">
                     Ask me anything about money matters and financial empowerment!
@@ -190,12 +192,16 @@ const SathiBot = () => {
               </div>
             </div>
           ) : (
-            <div ref={chatListRef} className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-3 sm:space-y-4">
+            <div
+              ref={chatListRef}
+              className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-3 sm:space-y-4"
+            >
               {messages.map((message) => (
                 <div
                   key={message.id}
-                  className={`flex items-start space-x-2 sm:space-x-3 ${message.sender === 'user' ? 'justify-end' : 'justify-start'
-                    }`}
+                  className={`flex items-start space-x-2 sm:space-x-3 ${
+                    message.sender === 'user' ? 'justify-end' : 'justify-start'
+                  }`}
                 >
                   {message.sender === 'bot' && (
                     <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-blue-500">
@@ -203,22 +209,25 @@ const SathiBot = () => {
                     </div>
                   )}
                   <div
-                    className={`max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl ${message.sender === 'user' ? 'order-1' : 'order-2'
-                      }`}
+                    className={`max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg xl:max-w-xl ${
+                      message.sender === 'user' ? 'order-1' : 'order-2'
+                    }`}
                   >
                     <div
-                      className={`p-3 sm:p-4 rounded-2xl shadow-sm ${message.sender === 'user'
+                      className={`p-3 sm:p-4 rounded-2xl shadow-sm ${
+                        message.sender === 'user'
                           ? 'bg-purple-500 text-white'
                           : 'bg-white text-purple-800 border border-purple-200'
-                        }`}
+                      }`}
                     >
                       <p className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">
                         {message.text}
                       </p>
                     </div>
                     <div
-                      className={`text-xs mt-1 ${message.sender === 'user' ? 'text-right' : 'text-left'
-                        } text-purple-500`}
+                      className={`text-xs mt-1 ${
+                        message.sender === 'user' ? 'text-right' : 'text-left'
+                      } text-purple-500`}
                     >
                       {formatTime(message.timestamp)}
                     </div>

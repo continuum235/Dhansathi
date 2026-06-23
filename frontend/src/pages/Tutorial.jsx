@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Footer from '../components/Footer';
 import { Plus, ExternalLink, BookOpen, Edit, Trash2, X } from 'lucide-react';
 import { buildApiUrl } from '../lib/api';
@@ -14,13 +14,13 @@ const Tutorial = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    url: ''
+    url: '',
   });
 
   const API_URL = buildApiUrl('/tutorials');
 
   // Fetch all tutorials
-  const fetchTutorials = async () => {
+  const fetchTutorials = useCallback(async () => {
     setLoading(true);
     setError('');
     try {
@@ -37,7 +37,7 @@ const Tutorial = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [API_URL]);
 
   // Add a new tutorial
   const handleAddTutorial = async (tutorialData) => {
@@ -83,7 +83,7 @@ const Tutorial = () => {
       }
 
       const updatedTutorial = await response.json();
-      setTutorials(tutorials.map(t => t._id === id ? updatedTutorial : t));
+      setTutorials(tutorials.map((t) => (t._id === id ? updatedTutorial : t)));
       setError('');
       return true;
     } catch (err) {
@@ -109,7 +109,7 @@ const Tutorial = () => {
         throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
       }
 
-      setTutorials(tutorials.filter(t => t._id !== id));
+      setTutorials(tutorials.filter((t) => t._id !== id));
       setError('');
     } catch (err) {
       console.error('Error deleting tutorial:', err);
@@ -120,9 +120,9 @@ const Tutorial = () => {
   // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -169,7 +169,7 @@ const Tutorial = () => {
     setFormData({
       title: tutorial.title,
       description: tutorial.description,
-      url: tutorial.url
+      url: tutorial.url,
     });
     setShowForm(true);
   };
@@ -185,7 +185,7 @@ const Tutorial = () => {
   // Load tutorials on mount
   useEffect(() => {
     fetchTutorials();
-  }, []);
+  }, [fetchTutorials]);
 
   return (
     <div>
@@ -206,7 +206,9 @@ const Tutorial = () => {
                   <BookOpen size={40} />
                   Tutorial Manager - Dhansathi
                 </h1>
-                <p className="text-purple-100">Smart tutorial management for your learning journey</p>
+                <p className="text-purple-100">
+                  Smart tutorial management for your learning journey
+                </p>
               </div>
             </div>
           </div>
@@ -217,7 +219,9 @@ const Tutorial = () => {
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <p className="font-semibold">Error: {error}</p>
-                  <p className="text-sm mt-2 text-red-600">Check that `VITE_API_URL` points to a live backend and MongoDB is connected.</p>
+                  <p className="text-sm mt-2 text-red-600">
+                    Check that `VITE_API_URL` points to a live backend and MongoDB is connected.
+                  </p>
                 </div>
                 <button
                   onClick={() => setError('')}
@@ -357,7 +361,9 @@ const Tutorial = () => {
                 <div className="text-center py-16 bg-white rounded-3xl shadow-lg">
                   <BookOpen size={64} className="mx-auto text-gray-300 mb-6" />
                   <h3 className="text-2xl font-bold text-gray-600 mb-3">No tutorials yet</h3>
-                  <p className="text-gray-500 text-lg">Add your first tutorial to get started on your learning journey!</p>
+                  <p className="text-gray-500 text-lg">
+                    Add your first tutorial to get started on your learning journey!
+                  </p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -388,8 +394,12 @@ const Tutorial = () => {
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2">{tutorial.title}</h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">{tutorial.description}</p>
+                      <h3 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2">
+                        {tutorial.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                        {tutorial.description}
+                      </p>
 
                       <a
                         href={tutorial.url}

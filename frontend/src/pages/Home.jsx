@@ -7,7 +7,7 @@ import { useAuth } from '../hooks/useAuth.js';
 // Loader Component
 const Loader = ({ isVisible }) => {
   if (!isVisible) return null;
-  
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-purple-800 via-purple-900 to-purple-800 flex justify-center items-center z-[2000]">
       <div className="relative">
@@ -18,7 +18,7 @@ const Loader = ({ isVisible }) => {
               className="text-6xl font-bold opacity-0 translate-y-10 text-white drop-shadow-lg"
               style={{
                 animation: `fadeInUp 0.8s forwards`,
-                animationDelay: `${index * 0.3}s`
+                animationDelay: `${index * 0.3}s`,
               }}
             >
               {letter}
@@ -48,7 +48,7 @@ const Loader = ({ isVisible }) => {
 // Hero Section Component
 const HeroSection = ({ scrollToSection }) => {
   const { isAuthenticated, fullName } = useAuth();
-  
+
   return (
     <section
       className="h-screen relative bg-cover bg-center bg-no-repeat overflow-hidden backdrop-blur-lg"
@@ -57,7 +57,10 @@ const HeroSection = ({ scrollToSection }) => {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-black/60 via-black/40 to-purple-900/60"></div>
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 right-20 w-32 h-32 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 left-20 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div
+          className="absolute bottom-40 left-20 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: '1s' }}
+        ></div>
       </div>
       <div className="relative z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white px-6 max-w-4xl">
         <div className="mb-6">
@@ -72,7 +75,8 @@ const HeroSection = ({ scrollToSection }) => {
           <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full mb-6"></div>
         </div>
         <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto font-light leading-relaxed text-gray-100">
-          Your trusted partner in financial advisory and literacy. Empowering communities through smart financial decisions.
+          Your trusted partner in financial advisory and literacy. Empowering communities through
+          smart financial decisions.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
@@ -81,8 +85,18 @@ const HeroSection = ({ scrollToSection }) => {
           >
             <span className="flex items-center">
               Learn More
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <svg
+                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
               </svg>
             </span>
           </button>
@@ -96,7 +110,12 @@ const HeroSection = ({ scrollToSection }) => {
       </div>
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
         </svg>
       </div>
     </section>
@@ -104,7 +123,7 @@ const HeroSection = ({ scrollToSection }) => {
 };
 
 // Section Component
-const Section = ({ id, children, isVisible, className = "" }) => {
+const Section = ({ id, children, isVisible, className = '' }) => {
   return (
     <section
       id={id}
@@ -134,16 +153,23 @@ const AboutSection = ({ isVisible }) => {
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="space-y-6 text-gray-100 leading-relaxed text-lg">
           <p className="hover:text-white transition-colors duration-300">
-            Dhansathi is a dedicated financial advisory platform designed to empower individuals, especially rural women, with financial literacy and tools for better money management.
+            Dhansathi is a dedicated financial advisory platform designed to empower individuals,
+            especially rural women, with financial literacy and tools for better money management.
           </p>
           <p className="hover:text-white transition-colors duration-300">
-            Our mission is to bridge the financial knowledge gap and provide easy access to financial education, personalized budgeting tools, and banking solutions tailored to the needs of our users.
+            Our mission is to bridge the financial knowledge gap and provide easy access to
+            financial education, personalized budgeting tools, and banking solutions tailored to the
+            needs of our users.
           </p>
           <p className="hover:text-white transition-colors duration-300">
-            Through AI-driven mentorship, community support, and user-friendly interfaces, Dhansathi simplifies complex financial concepts and makes them accessible to everyone, regardless of background or education level.
+            Through AI-driven mentorship, community support, and user-friendly interfaces, Dhansathi
+            simplifies complex financial concepts and makes them accessible to everyone, regardless
+            of background or education level.
           </p>
           <p className="hover:text-white transition-colors duration-300">
-            We believe that financial empowerment leads to personal growth, independence, and stronger communities. That's why we continuously work towards making financial management seamless and effective for our users.
+            We believe that financial empowerment leads to personal growth, independence, and
+            stronger communities. That's why we continuously work towards making financial
+            management seamless and effective for our users.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -172,12 +198,42 @@ const AboutSection = ({ isVisible }) => {
 // Values Section Component
 const ValuesSection = ({ isVisible }) => {
   const values = [
-    { icon: "📢", title: "Transparency", desc: "We believe in complete honesty and clarity in all financial matters. No hidden costs, no complicated jargon.", gradient: "from-blue-500/20 to-blue-600/20" },
-    { icon: "🤝", title: "Integrity", desc: "Trust is the foundation of any financial relationship. We are committed to ethical practices and user-first policies.", gradient: "from-green-500/20 to-green-600/20" },
-    { icon: "💡", title: "Financial Literacy", desc: "Educating and empowering users with knowledge to make informed financial decisions is our top priority.", gradient: "from-yellow-500/20 to-yellow-600/20" },
-    { icon: "📈", title: "Innovation", desc: "We leverage AI and technology to bring smart financial solutions tailored to individual needs.", gradient: "from-purple-500/20 to-purple-600/20" },
-    { icon: "💜", title: "Community Support", desc: "We foster a supportive network where users can share experiences, learn from each other, and grow together.", gradient: "from-pink-500/20 to-pink-600/20" },
-    { icon: "🌍", title: "Inclusion", desc: "Our platform is designed for everyone, ensuring financial access regardless of gender, location, or income level.", gradient: "from-teal-500/20 to-teal-600/20" }
+    {
+      icon: '📢',
+      title: 'Transparency',
+      desc: 'We believe in complete honesty and clarity in all financial matters. No hidden costs, no complicated jargon.',
+      gradient: 'from-blue-500/20 to-blue-600/20',
+    },
+    {
+      icon: '🤝',
+      title: 'Integrity',
+      desc: 'Trust is the foundation of any financial relationship. We are committed to ethical practices and user-first policies.',
+      gradient: 'from-green-500/20 to-green-600/20',
+    },
+    {
+      icon: '💡',
+      title: 'Financial Literacy',
+      desc: 'Educating and empowering users with knowledge to make informed financial decisions is our top priority.',
+      gradient: 'from-yellow-500/20 to-yellow-600/20',
+    },
+    {
+      icon: '📈',
+      title: 'Innovation',
+      desc: 'We leverage AI and technology to bring smart financial solutions tailored to individual needs.',
+      gradient: 'from-purple-500/20 to-purple-600/20',
+    },
+    {
+      icon: '💜',
+      title: 'Community Support',
+      desc: 'We foster a supportive network where users can share experiences, learn from each other, and grow together.',
+      gradient: 'from-pink-500/20 to-pink-600/20',
+    },
+    {
+      icon: '🌍',
+      title: 'Inclusion',
+      desc: 'Our platform is designed for everyone, ensuring financial access regardless of gender, location, or income level.',
+      gradient: 'from-teal-500/20 to-teal-600/20',
+    },
   ];
 
   return (
@@ -188,7 +244,8 @@ const ValuesSection = ({ isVisible }) => {
         </h2>
         <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full mb-6"></div>
         <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-          Our services are built on transparency, integrity, and innovation. We are committed to making financial decisions easier and more accessible for everyone.
+          Our services are built on transparency, integrity, and innovation. We are committed to
+          making financial decisions easier and more accessible for everyone.
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -217,9 +274,24 @@ const ValuesSection = ({ isVisible }) => {
 // Contact Section Component
 const ContactSection = ({ isVisible }) => {
   const contactInfo = [
-    { label: 'Email', value: 'contact@dhansathi.com', icon: '📧', gradient: 'from-blue-500/20 to-blue-600/20' },
-    { label: 'Phone', value: '+91 9876543210', icon: '📞', gradient: 'from-green-500/20 to-green-600/20' },
-    { label: 'Address', value: 'Dhansathi, Mumbai, India', icon: '📍', gradient: 'from-purple-500/20 to-purple-600/20' }
+    {
+      label: 'Email',
+      value: 'contact@dhansathi.com',
+      icon: '📧',
+      gradient: 'from-blue-500/20 to-blue-600/20',
+    },
+    {
+      label: 'Phone',
+      value: '+91 9876543210',
+      icon: '📞',
+      gradient: 'from-green-500/20 to-green-600/20',
+    },
+    {
+      label: 'Address',
+      value: 'Dhansathi, Mumbai, India',
+      icon: '📍',
+      gradient: 'from-purple-500/20 to-purple-600/20',
+    },
   ];
 
   return (
@@ -230,7 +302,8 @@ const ContactSection = ({ isVisible }) => {
         </h2>
         <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full mb-6"></div>
         <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-          Ready to start your financial journey? Get in touch with us today and let's build your financial future together.
+          Ready to start your financial journey? Get in touch with us today and let's build your
+          financial future together.
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
@@ -259,7 +332,6 @@ const ContactSection = ({ isVisible }) => {
     </Section>
   );
 };
-
 
 // Main App Component
 const Home = () => {
@@ -294,9 +366,9 @@ const Home = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections(prev => ({
+            setVisibleSections((prev) => ({
               ...prev,
-              [entry.target.id]: true
+              [entry.target.id]: true,
             }));
           }
         });
@@ -306,7 +378,7 @@ const Home = () => {
 
     const timer = setTimeout(() => {
       const sections = document.querySelectorAll('section[id]');
-      sections.forEach(section => observer.observe(section));
+      sections.forEach((section) => observer.observe(section));
     }, 100);
 
     return () => {
@@ -329,24 +401,24 @@ const Home = () => {
   return (
     <div className="font-sans text-white bg-gradient-to-br from-purple-800 via-purple-900 to-purple-800 overflow-x-hidden min-h-screen">
       <Loader isVisible={showLoader} />
-      
+
       {!showLoader && (
         <div className="opacity-100 transition-opacity duration-1000">
-          <Navbar 
+          <Navbar
             isScrolled={isScrolled}
             isMenuOpen={isMenuOpen}
             toggleMenu={toggleMenu}
             scrollToSection={scrollToSection}
           />
-          
+
           <HeroSection scrollToSection={scrollToSection} />
-          
+
           <AboutSection isVisible={visibleSections.about} />
-          
+
           <ValuesSection isVisible={visibleSections.values} />
-          
+
           <ContactSection isVisible={visibleSections.contact} />
-          
+
           <Footer />
         </div>
       )}

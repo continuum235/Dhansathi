@@ -1,22 +1,7 @@
 import { useUser, useAuth as useClerkAuth } from '@clerk/clerk-react';
-import { isClerkEnabled } from '../lib/auth.jsx';
+import { isClerkEnabled } from '../lib/auth.constants.js';
 
-export const useAuth = () => {
-  if (!isClerkEnabled) {
-    return {
-      user: null,
-      isLoaded: true,
-      isAuthenticated: false,
-      signOut: async () => {},
-      userId: undefined,
-      email: undefined,
-      firstName: undefined,
-      lastName: undefined,
-      fullName: undefined,
-      imageUrl: undefined
-    };
-  }
-
+const useClerkAuthHook = () => {
   const { user, isLoaded } = useUser();
   const { signOut } = useClerkAuth();
 
@@ -30,6 +15,21 @@ export const useAuth = () => {
     firstName: user?.firstName,
     lastName: user?.lastName,
     fullName: user?.fullName,
-    imageUrl: user?.imageUrl
+    imageUrl: user?.imageUrl,
   };
 };
+
+const useFallbackAuth = () => ({
+  user: null,
+  isLoaded: true,
+  isAuthenticated: false,
+  signOut: async () => {},
+  userId: undefined,
+  email: undefined,
+  firstName: undefined,
+  lastName: undefined,
+  fullName: undefined,
+  imageUrl: undefined,
+});
+
+export const useAuth = isClerkEnabled ? useClerkAuthHook : useFallbackAuth;

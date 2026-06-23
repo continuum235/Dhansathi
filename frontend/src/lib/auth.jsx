@@ -6,9 +6,7 @@ import {
   SignInButton as ClerkSignInButton,
   UserButton as ClerkUserButton,
 } from '@clerk/clerk-react';
-
-export const clerkPublishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY || '';
-export const isClerkEnabled = Boolean(clerkPublishableKey);
+import { clerkPublishableKey, isClerkEnabled } from './auth.constants.js';
 
 export const AuthProvider = ({ children }) => {
   if (!isClerkEnabled) {
